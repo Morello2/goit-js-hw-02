@@ -1,9 +1,15 @@
 "use strickt";
 
-function getShippingMessage(country, price, deliveryFee) {
-  return `Shipping to ${country} will cost ${price + deliveryFee} credits`;
+function formatMessage(message, maxLength) {
+  if (maxLength >= message.length) {
+    return message;
+  } else {
+    return message.slice(0, maxLength) + "...";
+  }
 }
-
-console.log(getShippingMessage("Australia", 120, 50)); // "Shipping to Australia will cost 170 credits"
-console.log(getShippingMessage("Germany", 80, 20)); // "Shipping to Germany will cost 100 credits"
-console.log(getShippingMessage("Sweden", 100, 20)); // "Shipping to Sweden will cost 120 credits"
+console.log(formatMessage("message", 5));
+console.log(formatMessage("message", 7));
+console.log(formatMessage("message fault", 10));
+console.log(formatMessage("message fault", 12));
+console.log(formatMessage("message fault", 15));
+console.log(formatMessage("message seccessfully", 20));

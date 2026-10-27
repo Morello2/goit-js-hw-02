@@ -1,9 +1,15 @@
 "use strickt";
 
-function makeTransaction(quantity, pricePerDroid) {
-  return `You ordered ${quantity} droids worth ${quantity * pricePerDroid} credits!`;
+function makeTransaction(quantity, pricePerDroid, customerCredits) {
+  if (quantity * pricePerDroid <= customerCredits) {
+    return `Total is ${quantity * pricePerDroid}`;
+  } else {
+    return "Insufficient funds!";
+  }
 }
 
-console.log(makeTransaction(5, 3000)); // "You ordered 5 droids worth 15000 credits!"
-console.log(makeTransaction(3, 1000)); // "You ordered 3 droids worth 3000 credits!"
-console.log(makeTransaction(10, 500)); // "You ordered 10 droids worth 5000 credits!"
+console.log(makeTransaction(5, 100, 1000));
+console.log(makeTransaction(9, 250, 2000));
+console.log(makeTransaction(2, 500, 1000));
+console.log(makeTransaction(4, 350, 10000));
+console.log(makeTransaction(7, 100, 600));
